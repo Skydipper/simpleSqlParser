@@ -440,6 +440,42 @@ var Select = [
 			limit: { from: 1, nb: 2 },
 		},
 	},
+	{
+		c: 'BETWEEN',
+		q: 'SELECT * FROM table WHERE col BETWEEN 1 and 5',
+		a: {
+			type: 'select',
+			select: [
+				{ expression: '*', column: '*', table: null, alias: null, position: { start: 7, end: 8 } },
+			],
+			from: [
+				{ expression: 'table', table: 'table', alias: null, position: { start: 14, end: 19 } },
+			],
+			join: [],
+			where: { expression: 'col BETWEEN 1 and 5', position: { start: 26, end: 45 } },
+			group: [],
+			order: [],
+			limit: null,
+		},
+	},
+	{
+		c: 'NOT BETWEEN',
+		q: 'SELECT * FROM table WHERE col NOT BETWEEN 1 and 5',
+		a: {
+			type: 'select',
+			select: [
+				{ expression: '*', column: '*', table: null, alias: null, position: { start: 7, end: 8 } },
+			],
+			from: [
+				{ expression: 'table', table: 'table', alias: null, position: { start: 14, end: 19 } },
+			],
+			join: [],
+			where: { expression: 'col NOT BETWEEN 1 and 5', position: { start: 26, end: 49 } },
+			group: [],
+			order: [],
+			limit: null,
+		},
+	},
 ];
 
 suite('sql2ast - select');

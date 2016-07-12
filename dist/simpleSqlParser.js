@@ -445,15 +445,8 @@ exports.version = require('./package.json').version;
 module.exports={
   "_args": [
     [
-      {
-        "name": "parsimmon",
-        "raw": "parsimmon@0.7.0",
-        "rawSpec": "0.7.0",
-        "scope": null,
-        "spec": "0.7.0",
-        "type": "version"
-      },
-      "D:\\Users\\David\\Documents\\EscaleDigitale\\simpleSqlParser"
+      "parsimmon@0.7.0",
+      "/Users/ra/Workspace/ra/simpleSqlParser"
     ]
   ],
   "_from": "parsimmon@0.7.0",
@@ -482,7 +475,7 @@ module.exports={
   "_shasum": "652fc7cbade73c5edb42a266ec556c906d82c9fb",
   "_shrinkwrap": null,
   "_spec": "parsimmon@0.7.0",
-  "_where": "D:\\Users\\David\\Documents\\EscaleDigitale\\simpleSqlParser",
+  "_where": "/Users/ra/Workspace/ra/simpleSqlParser",
   "author": {
     "email": "jneen at jneen dot net",
     "name": "Jeanine Adkisson"
@@ -505,30 +498,30 @@ module.exports={
     "tarball": "https://registry.npmjs.org/parsimmon/-/parsimmon-0.7.0.tgz"
   },
   "files": [
-    "index.js",
-    "src",
-    "test",
     "Makefile",
-    "package.json",
-    "build/parsimmon.commonjs.js",
     "build/parsimmon.browser.js",
-    "build/parsimmon.browser.min.js"
+    "build/parsimmon.browser.min.js",
+    "build/parsimmon.commonjs.js",
+    "index.js",
+    "package.json",
+    "src",
+    "test"
   ],
   "homepage": "https://github.com/jneen/parsimmon",
   "keywords": [
-    "parsing",
     "parse",
-    "parser combinators"
+    "parser combinators",
+    "parsing"
   ],
   "main": "index.js",
   "maintainers": [
     {
-      "email": "jjmadkisson@gmail.com",
-      "name": "jayferd"
+      "name": "jayferd",
+      "email": "jjmadkisson@gmail.com"
     },
     {
-      "email": "jneen@jneen.net",
-      "name": "jneen"
+      "name": "jneen",
+      "email": "jneen@jneen.net"
     }
   ],
   "name": "parsimmon",
@@ -835,6 +828,8 @@ var operator = alt(
 	regex(/IS/i),
 	regex(/LIKE/i),
 	regex(/NOT LIKE/i),
+	regex(/BETWEEN/i),
+	regex(/NOT BETWEEN/i),
 	string('%'),
 	regex(/MOD/i),
 	regex(/NOT/i),

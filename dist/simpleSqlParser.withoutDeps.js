@@ -296,6 +296,8 @@ var operator = alt(
 	regex(/IS/i),
 	regex(/LIKE/i),
 	regex(/NOT LIKE/i),
+	regex(/BETWEEN/i),
+	regex(/NOT BETWEEN/i),
 	string('%'),
 	regex(/MOD/i),
 	regex(/NOT/i),
