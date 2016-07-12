@@ -414,6 +414,7 @@
 
 			if (/^(AND|OR)$/i.test(tokenValue)) return {type: 'logic', value: tokenValue};
 			if (/^(IN|IS|NOT|LIKE)$/i.test(tokenValue)) return {type: 'operator', value: tokenValue};
+			if (/^(BETWEEN)$/i.test(tokenValue)) return {type: 'operator-between', value: tokenValue};
 			else return {type: 'word', value: tokenValue};
 		},
 
@@ -524,7 +525,7 @@
 		// Parse conditions ([word/string] [operator] [word/string])
 		parseConditionExpression: function () {
 			var leftNode = this.parseBaseExpression();
-
+			var rightNode = null;
 			if (this.currentToken.type == 'operator') {
 				var operator = this.currentToken.value;
 				this.readNextToken();
@@ -533,12 +534,24 @@
 				if (this.currentToken.type == 'operator') {
 					operator += ' ' + this.currentToken.value;
 					this.readNextToken();
-				}
-
-				var rightNode = this.parseBaseExpression();
-
+					rightNode = this.parseBaseExpression();
+				} else if(this.currentToken.type == 'operator-between'){
+					//NOT BETWEEN
+					operator += ' ' + this.currentToken.value;						
+					this.readNextToken();
+					rightNode = this.parseExpressionsRecursively();
+				} else {
+					rightNode = this.parseBaseExpression();
+				}			
 				leftNode = {'operator': operator, 'left': leftNode, 'right': rightNode};
+			} else  if(this.currentToken.type == 'operator-between'){
+					//is between
+					var operator = this.currentToken.value;
+					this.readNextToken();
+					rightNode = this.parseExpressionsRecursively();
+					leftNode = {'operator': operator, 'left': leftNode, 'right': rightNode};
 			}
+			
 
 			return leftNode;
 		},
