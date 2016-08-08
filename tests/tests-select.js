@@ -476,6 +476,24 @@ var Select = [
 			limit: null,
 		},
 	},
+	{
+		c: 'CAST',
+		q: 'SELECT * FROM table WHERE col::numeric > 2',
+		a: {
+			type: 'select',
+			select: [
+				{ expression: '*', column: '*', table: null, alias: null, position: { start: 7, end: 8 } },
+			],
+			from: [
+				{ expression: 'table', table: 'table', alias: null, position: { start: 14, end: 19 } },
+			],
+			join: [],
+			where: { expression: 'col::numeric > 2', position: { start: 26, end: 42 } },
+			group: [],
+			order: [],
+			limit: null,
+		},
+	},
 ];
 
 suite('sql2ast - select');
